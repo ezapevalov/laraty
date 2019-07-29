@@ -1,0 +1,63 @@
+// Additional Gutters
+.gutters-1 {
+  margin-right: -.125rem;
+  margin-left: -.125rem;
+  > .col,
+  > [class*="col-"] {
+    padding-right: .125rem;
+    padding-left: .125rem;
+  }
+}
+.gutters-2 {
+  margin-right: -.25rem;
+  margin-left: -.25rem;
+  > .col,
+  > [class*="col-"] {
+    padding-right: .25rem;
+    padding-left: .25rem;
+  }
+}
+.gutters-3 {
+  margin-right: -.5rem;
+  margin-left: -.5rem;
+  > .col,
+  > [class*="col-"] {
+    padding-right: .5rem;
+    padding-left: .5rem;
+  }
+}
+
+// grid
+.grid {
+  display: grid;
+}
+.inline-grid {
+  display: inline-grid;
+}
+@for $i from 1 through $grid-columns {
+  .grid-col-#{$i} {
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
+}
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    @if $breakpoint != 'xs' {
+      @for $i from 1 through $grid-columns {
+        .grid-col-#{$breakpoint}-#{$i} {
+          grid-template-columns: repeat(#{$i}, 1fr);
+        }
+      }
+    }
+  }
+}
+@each $size, $length in $spacers {
+  .grid-gap-#{$size} {
+    grid-gap: $length;
+  }
+  .row-gap-#{$size} {
+    row-gap: $length;
+  }
+  .column-gap-#{$size} {
+    column-gap: $length;
+  }
+}

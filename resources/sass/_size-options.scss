@@ -1,0 +1,16 @@
+.size-options {
+  > label {
+    width: 35px;
+    border-radius: 50% !important;
+    &:not(:first-child) {
+      margin-left: .25rem !important;
+    }
+    @include flex-center()
+  }
+  &.btn-group-sm > label {
+    width: 28px;
+  }
+  &.btn-group-lg > label {
+    width: 44px;
+  }
+}
